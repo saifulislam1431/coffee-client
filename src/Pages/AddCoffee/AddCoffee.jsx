@@ -1,4 +1,6 @@
 import React from 'react';
+import { FaArrowLeft, FaBackspace } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
 const AddCoffee = () => {
@@ -37,6 +39,11 @@ const AddCoffee = () => {
     }
     return (
         <main className='myContainer mt-5 lg:mt-10'>
+            <div className='my-5 text-secondary'>
+                <Link to ="/">
+                <button className='inline-flex items-center gap-2'><FaArrowLeft /> <span className='font-semibold text-xl' style={{fontFamily: ['Rancho','cursive']}}>Back To Home</span></button>
+                </Link>
+            </div>
             <section className='flex items-center justify-center bg-primary bg-opacity-10'>
                 <div className='py-5 px-4 w-full'>
                     <div className='text-center my-4'>

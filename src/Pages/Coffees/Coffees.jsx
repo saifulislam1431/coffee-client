@@ -1,8 +1,9 @@
 import React from 'react';
 import { FaEye, FaPen, FaTrash } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const Coffees = ({ coffees }) => {
-    const { name, chef, supplier, taste, category, details, photo } = coffees;
+    const { _id, name, chef, supplier, taste, category, details, photo } = coffees;
 
     // console.log(coffees);
     return (
@@ -16,17 +17,19 @@ const Coffees = ({ coffees }) => {
                         <p><span className='font-semibold'>Supplier: {supplier}</span></p>
                     </div>
                     <div className="card-actions flex flex-col pr-5 space-y-3">
-                        <button className='bg-primary px-4 py-2  rounded-md'>
-                            <FaEye className='text-center text-white'/>
-                        </button>
+                        <Link to={`/coffeeDetails/${_id}`}>
+                            <button className='bg-primary px-4 py-2  rounded-md'>
+                                <FaEye className='text-center text-white' />
+                            </button>
+                        </Link>
 
 
                         <button className='bg-secondary px-4 py-2  rounded-md'>
-                            <FaPen className='text-center text-white'/>
+                            <FaPen className='text-center text-white' />
                         </button>
 
                         <button className='bg-error px-4 py-2  rounded-md'>
-                            <FaTrash className='text-center text-white'/>
+                            <FaTrash className='text-center text-white' />
                         </button>
                     </div>
                 </div>
