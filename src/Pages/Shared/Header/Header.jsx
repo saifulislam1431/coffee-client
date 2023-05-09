@@ -5,7 +5,7 @@ import logo from "../../../assets/images/icons/1.png"
 const Header = () => {
     return (
         <nav>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-base-100 myContainer">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -16,7 +16,7 @@ const Header = () => {
                             <NavLink className={({isActive})=>(isActive ? 'active' : 'default')} to="/">Home</NavLink>
                         </li>
                         <li>
-                            <NavLink className={({isActive})=>(isActive ? 'active' : 'default')} to="/about">About US</NavLink>
+                            <NavLink className={({isActive})=>(isActive ? 'active' : 'default')} to="/about">About Us</NavLink>
                         </li>
                         <li>
                             <NavLink className={({isActive})=>(isActive ? 'active' : 'default')} to="/contact">Contact</NavLink>
@@ -33,7 +33,7 @@ const Header = () => {
                             <NavLink className={({isActive})=>(isActive ? 'active' : 'default')} to="/">Home</NavLink>
                         </li>
                         <li>
-                            <NavLink className={({isActive})=>(isActive ? 'active' : 'default')} to="/about">About US</NavLink>
+                            <NavLink className={({isActive})=>(isActive ? 'active' : 'default')} to="/about">About Us</NavLink>
                         </li>
                         <li>
                             <NavLink className={({isActive})=>(isActive ? 'active' : 'default')} to="/contact">Contact</NavLink>
