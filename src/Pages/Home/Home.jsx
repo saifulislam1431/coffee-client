@@ -1,7 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import bg1 from "../../assets/images/more/1.png"
+import "./home.css";
+import Coffees from '../Coffees/Coffees';
 
 const Home = () => {
+    const allCoffees = useLoaderData();
     return (
         <main className='myContainer'>
             {/* Add coffee section */}
@@ -16,6 +20,17 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+        {/* Loaded Coffee */}
+        <section className=' my-5 flex items-center justify-center myBg'>
+            <div className='grid md:grid-cols-2 2xl:grid-cols-3 space-x-5 space-y-3'>
+                {
+                    allCoffees.map(coffees => <Coffees
+                    key={coffees._id}
+                    coffees = {coffees}
+                    ></Coffees>)
+                }
+            </div>
+        </section>
         </main>
     );
 };
