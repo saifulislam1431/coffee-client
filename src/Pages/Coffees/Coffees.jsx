@@ -3,9 +3,9 @@ import { FaEye, FaPen, FaTrash } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const Coffees = ({ coffees,setCoffees,allCoffees }) => {
+const Coffees = ({ coffees, setCoffees, allCoffees }) => {
     const { _id, name, chef, supplier, taste, category, details, photo } = coffees;
-    const handleDelete = _id =>{
+    const handleDelete = _id => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -14,26 +14,26 @@ const Coffees = ({ coffees,setCoffees,allCoffees }) => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://coffee-server-chi.vercel.app/coffees/${_id}`,{
-                    method:"DELETE"
+                fetch(`https://coffee-server-chi.vercel.app/coffees/${_id}`, {
+                    method: "DELETE"
                 })
-                .then(res=>res.json())
-                .then(data=>{
-                    if(data.deletedCount > 0){
-                        Swal.fire(
-                            'Deleted!',
-                            'Coffee has been deleted.',
-                            'success'
-                          )
-                          const remaining = allCoffees.filter(cof=>cof._id !== _id);
-                          setCoffees(remaining);
-                    }
-                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Coffee has been deleted.',
+                                'success'
+                            )
+                            const remaining = allCoffees.filter(cof => cof._id !== _id);
+                            setCoffees(remaining);
+                        }
+                    })
             }
-          })
-        
+        })
+
     }
 
     // console.log(coffees);
@@ -55,11 +55,13 @@ const Coffees = ({ coffees,setCoffees,allCoffees }) => {
                         </Link>
 
 
-                        <button className='bg-secondary px-4 py-2  rounded-md'>
-                            <FaPen className='text-center text-white' />
-                        </button>
+                        <Link to={`/updateCoffee/${_id}`}>
+                            <button className='bg-secondary px-4 py-2  rounded-md'>
+                                <FaPen className='text-center text-white' />
+                            </button>
+                        </Link>
 
-                        <button className='bg-error px-4 py-2  rounded-md' onClick={()=>handleDelete(_id)}>
+                        <button className='bg-error px-4 py-2  rounded-md' onClick={() => handleDelete(_id)}>
                             <FaTrash className='text-center text-white' />
                         </button>
                     </div>
