@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import bg1 from "../../assets/images/more/1.png"
 import "./home.css";
 import Coffees from '../Coffees/Coffees';
 
 const Home = () => {
-    const allCoffees = useLoaderData();
+    const loadedCoffees = useLoaderData();
+    const [allCoffees , setCoffees] = useState(loadedCoffees)
     return (
         <main className='myContainer'>
             {/* Add coffee section */}
@@ -27,6 +28,8 @@ const Home = () => {
                     allCoffees.map(coffees => <Coffees
                     key={coffees._id}
                     coffees = {coffees}
+                    setCoffees={setCoffees}
+                    allCoffees={allCoffees}
                     ></Coffees>)
                 }
             </div>

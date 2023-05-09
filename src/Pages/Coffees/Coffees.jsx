@@ -1,9 +1,40 @@
 import React from 'react';
 import { FaEye, FaPen, FaTrash } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-const Coffees = ({ coffees }) => {
+const Coffees = ({ coffees,setCoffees,allCoffees }) => {
     const { _id, name, chef, supplier, taste, category, details, photo } = coffees;
+    const handleDelete = _id =>{
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://coffee-server-chi.vercel.app/coffees/${_id}`,{
+                    method:"DELETE"
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                    if(data.deletedCount > 0){
+                        Swal.fire(
+                            'Deleted!',
+                            'Coffee has been deleted.',
+                            'success'
+                          )
+                          const remaining = allCoffees.filter(cof=>cof._id !== _id);
+                          setCoffees(remaining);
+                    }
+                })
+            }
+          })
+        
+    }
 
     // console.log(coffees);
     return (
@@ -28,7 +59,7 @@ const Coffees = ({ coffees }) => {
                             <FaPen className='text-center text-white' />
                         </button>
 
-                        <button className='bg-error px-4 py-2  rounded-md'>
+                        <button className='bg-error px-4 py-2  rounded-md' onClick={()=>handleDelete(_id)}>
                             <FaTrash className='text-center text-white' />
                         </button>
                     </div>
