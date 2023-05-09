@@ -1,10 +1,50 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import logo from "../../../assets/images/icons/1.png"
 
 const Header = () => {
     return (
-        <div>
-            
-        </div>
+        <nav>
+            <div className="navbar bg-base-100">
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        </label>
+                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <li>
+                            <NavLink className={({isActive})=>(isActive ? 'active' : 'default')} to="/">Home</NavLink>
+                        </li>
+                        <li>
+                            <NavLink className={({isActive})=>(isActive ? 'active' : 'default')} to="/about">About US</NavLink>
+                        </li>
+                        <li>
+                            <NavLink className={({isActive})=>(isActive ? 'active' : 'default')} to="/contact">Contact</NavLink>
+                        </li>
+                        </ul>
+                    </div>
+                    <a className="btn btn-ghost normal-case text-2xl text-secondary font-extrabold inline-flex items-center gap-2">
+                        <img src={logo} alt="" className='w-8'/>
+                        Espresso</a>
+                </div>
+                <div className="navbar-center hidden lg:flex">
+                    <ul className="menu menu-horizontal px-1">
+                        <li>
+                            <NavLink className={({isActive})=>(isActive ? 'active' : 'default')} to="/">Home</NavLink>
+                        </li>
+                        <li>
+                            <NavLink className={({isActive})=>(isActive ? 'active' : 'default')} to="/about">About US</NavLink>
+                        </li>
+                        <li>
+                            <NavLink className={({isActive})=>(isActive ? 'active' : 'default')} to="/contact">Contact</NavLink>
+                        </li>
+                    </ul>
+                </div>
+                <Link to="/login" className="navbar-end">
+                    <a className="myBtn">Login</a>
+                </Link>
+            </div>
+        </nav>
     );
 };
 

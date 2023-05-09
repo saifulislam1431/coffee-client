@@ -9,13 +9,13 @@ export default {
       {
         mytheme: {
         
-"primary": "#ef77c7",
+"primary": "#E3B577",
         
-"secondary": "#54d850",
+"secondary": "#331A15",
         
 "accent": "#13c436",
         
-"neutral": "#151D23",
+"neutral": "#3C393B",
         
 "base-100": "#F5EEF6",
         
@@ -25,7 +25,7 @@ export default {
         
 "warning": "#C0A20C",
         
-"error": "#E85E73",
+"error": "#EA4744",
         },
       },
     ],
